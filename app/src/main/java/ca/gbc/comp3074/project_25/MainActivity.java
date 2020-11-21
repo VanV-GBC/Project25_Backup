@@ -4,14 +4,22 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    private RestaurantViewModel restaurantViewModel;
 
     //set fragment manager
     FragmentManager fragmentManager = getSupportFragmentManager();
@@ -20,6 +28,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        restaurantViewModel = new ViewModelProvider(this,
+                ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(RestaurantViewModel.class);
+
+        restaurantViewModel.getAllRestaurants().observe(this, new Observer<List<Restaurant>>() {
+            @Override
+            public void onChanged(List<Restaurant> restaurants) {
+                // update RecyclerView
+                Toast.makeText(MainActivity.this, "onChanged", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
 
         //instantiate initial fragment.
         Fragment mainFragment = new MainFragment();
@@ -62,7 +83,10 @@ public class MainActivity extends AppCompatActivity {
         if (item_id == R.id.menu_about){
             startAboutActivity();
 
-        }else{
+        }else if (item_id == R.id.menu_tempdetail){
+            startDetailsActivity();
+        }
+        else{
             return super.onOptionsItemSelected(item);
         }
         return true;
