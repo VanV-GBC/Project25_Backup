@@ -1,31 +1,35 @@
-package ca.gbc.comp3074.project_25;
+package ca.gbc.comp3074.project_25._restaurant;
 
 import android.content.Context;
 import android.os.AsyncTask;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
 @Database(entities = {Restaurant.class}, version =1)
 @TypeConverters(Converters.class)
 public abstract class RestaurantDatabase extends RoomDatabase {
 
+    // Singleton db
     private static RestaurantDatabase instance;
 
+    //Access DAO
     public abstract RestaurantDao restaurantDao();
 
     public static synchronized RestaurantDatabase getInstance(Context context){
+        // Create single instance of db
         if(instance == null){
             instance = Room.databaseBuilder(context.getApplicationContext(),
                     RestaurantDatabase.class, "restaurant_database" )
-                    .fallbackToDestructiveMigration()
+                    .fallbackToDestructiveMigration() // needed if db changes are made
                     .addCallback(roomCallback)
                     .build();
         }
@@ -47,7 +51,8 @@ public abstract class RestaurantDatabase extends RoomDatabase {
             restaurantDao = db.restaurantDao();
         }
 
-        String tags = "Greek,Gyros,Yum";
+        List<String> tags = Arrays.asList("Tag1","Tag2","Tag3");
+        Date rn = new Date();
         @Override
         protected Void doInBackground(Void... voids){
             restaurantDao.insert(new Restaurant(
@@ -60,24 +65,36 @@ public abstract class RestaurantDatabase extends RoomDatabase {
                     "Canada",
                     "4164390000",
                     "some.place@yahoo.ca",
+                    "www.google.com",
+                    "4164444444",
+                    "This is a nice place. This is also a temporary placeholder/dummy data",
                     43.6723899,
                     -79.4117368,
-                    4.5f, tags
+                    4.5f,
+                    tags,
+                    rn,
+                    rn
             ));
 
             restaurantDao.insert(new Restaurant(
-                    "Bamboo Buddha",
-                    "44 Spadina Ave.",
-                    "Unit 5",
+                    "Original Grill",
+                    "22 Spadina Ave.",
+                    "Unit 2",
                     "Toronto",
-                    "y1h1g1",
+                    "m4p3f2",
                     "ON",
                     "Canada",
-                    "4164391111",
-                    "some.other.place@yahoo.ca",
+                    "4164390000",
+                    "some.place@yahoo.ca",
+                    "www.google.com",
+                    "4164444444",
+                    "This is a nice place. This is also a temporary placeholder/dummy data",
                     43.6723899,
                     -79.4117368,
-                    4.0f, tags
+                    4.5f,
+                    tags,
+                    rn,
+                    rn
             ));
 
 

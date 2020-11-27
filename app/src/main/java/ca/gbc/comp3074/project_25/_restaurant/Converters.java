@@ -1,4 +1,4 @@
-package ca.gbc.comp3074.project_25;
+package ca.gbc.comp3074.project_25._restaurant;
 
 import androidx.room.TypeConverter;
 
@@ -8,6 +8,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 public class Converters {
@@ -25,5 +26,15 @@ public class Converters {
         if (str == null)
             return null;
         return new ArrayList<>(Arrays.asList(str.split(",")));
+    }
+
+    @TypeConverter
+    public static Date fromTimestamp(Long value) {
+        return value == null ? null : new Date(value);
+    }
+
+    @TypeConverter
+    public static Long dateToTimestamp(Date date) {
+        return date == null ? null : date.getTime();
     }
 }

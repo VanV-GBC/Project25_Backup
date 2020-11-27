@@ -17,9 +17,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project_25.Material_Design">
         <activity
-            android:name=".MapActivity"
+            android:name=".details_edit_activity.DetailsEditActivity"
+            android:label="@string/title_activity_details_edit"
+            android:theme="@style/Theme.Project_25.Material_Design"></activity>
+        <activity
+            android:name=".map_activity.MapActivity"
             android:label="@string/title_activity_map"
-            android:theme="@style/Theme.Project_25.Material_Design.NoActionBar"></activity>
+            android:theme="@style/Theme.Project_25.Material_Design.NoActionBar" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -33,25 +37,28 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".AboutActivity"
+            android:name=".about_activity.AboutActivity"
             android:label="@string/title_activity_about"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/Theme.Project_25.Material_Design" />
+            android:parentActivityName=".main_activity.MainActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity
-            android:name=".DetailsActivity"
+            android:name=".details_activity.DetailsActivity"
             android:label="@string/title_activity_details"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/Theme.Project_25.Material_Design" />
+            android:parentActivityName=".main_activity.MainActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity
-            android:name=".SplashScreenActivity"
-            android:theme="@style/Theme.Project_25.Material_Design.NoActionBar">
+            android:name=".splash_activity.SplashScreenActivity"
+            android:theme="@style/Theme.Project_25.Material_Design.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".main_activity.MainActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar" />
     </application>
 
 </manifest>

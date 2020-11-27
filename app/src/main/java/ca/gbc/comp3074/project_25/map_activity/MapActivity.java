@@ -1,4 +1,4 @@
-package ca.gbc.comp3074.project_25;
+package ca.gbc.comp3074.project_25.map_activity;
 
 import android.os.Bundle;
 
@@ -11,6 +11,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.view.View;
+
+import ca.gbc.comp3074.project_25.MapsFragment;
+import ca.gbc.comp3074.project_25.R;
 
 public class MapActivity extends AppCompatActivity {
 
@@ -25,9 +28,6 @@ public class MapActivity extends AppCompatActivity {
         setContentView(R.layout.activity_map);
 
         Bundle data = getIntent().getExtras();
-
-
-
 
         //instantiate initial fragment.
         Fragment mapsFragment = new MapsFragment();

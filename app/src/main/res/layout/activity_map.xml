@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MapActivity">
+    tools:context=".map_activity.MapActivity">
 
 
     <FrameLayout
@@ -15,5 +15,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/button_switch_to_directions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="32dp"
+            android:src="@drawable/ic_maps_gps"
+            app:backgroundTint="@color/cerulean_transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

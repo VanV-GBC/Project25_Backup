@@ -1,4 +1,4 @@
-package ca.gbc.comp3074.project_25;
+package ca.gbc.comp3074.project_25._restaurant;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
@@ -7,6 +7,8 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 import java.util.List;
+
+import ca.gbc.comp3074.project_25._restaurant.Restaurant;
 
 @Dao
 public interface RestaurantDao {
@@ -24,4 +26,7 @@ public interface RestaurantDao {
 
     @Query("Select * FROM restaurant_table ORDER BY restaurantId DESC")
     LiveData<List<Restaurant>> getAllRestaurants();
+
 }
+
+

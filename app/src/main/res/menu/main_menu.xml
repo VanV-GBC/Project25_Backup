@@ -3,11 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/menu_about"
-        android:title="About"
+        android:id="@+id/menu_details_edit"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="Add"
         app:showAsAction="ifRoom|withText" />
     <item
-        android:id="@+id/menu_tempdetail"
-        android:title="Deets"
+        android:id="@+id/menu_about"
+
+        android:icon="@android:drawable/ic_dialog_info"
+        android:title="About"
         app:showAsAction="ifRoom|withText" />
 </menu>

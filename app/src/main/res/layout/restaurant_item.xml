@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp">
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/restaurant_tags"
+        android:layout_width="395dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="2dp"
+        android:clickable="false"
+        app:chipIconEnabled="true"
+        app:closeIconTint="@color/cardview_shadow_end_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/txt_items_card_restaurant_name"
+        app:layout_constraintTop_toBottomOf="@+id/view_ratingBar_restaurant_rating">
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <TextView
+        android:id="@+id/txt_items_card_restaurant_name"
+        android:layout_width="237dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toTopOf="@+id/restaurant_tags"
+        app:layout_constraintEnd_toStartOf="@+id/view_ratingBar_restaurant_rating"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.238" />
+
+    <RatingBar
+        android:id="@+id/view_ratingBar_restaurant_rating"
+        style="@style/customRatingBar"
+        android:progressTint="@color/cerulean"
+        android:secondaryProgressTint="@color/teal_700"
+        android:layout_width="81dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:numStars="5"
+        android:stepSize="0.5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

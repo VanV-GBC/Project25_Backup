@@ -1,36 +1,37 @@
-package ca.gbc.comp3074.project_25;
+package ca.gbc.comp3074.project_25._restaurant;
 
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
-import java.lang.reflect.Array;
+import java.util.Date;
+import java.util.List;
 
 @Entity(tableName = "restaurant_table")
+@TypeConverters({Converters.class})
 public class Restaurant {
 
     @PrimaryKey(autoGenerate = true)
     private int restaurantId;
-
     private String restaurantName;
-
     private String restaurantAddyLine1;
-
     private String restaurantAddyLine2;
-
     private String restaurantCity;
-
     private String restaurantPostalCode;
-
     private String restaurantProvince;
     private String restaurantCountry;
     private String restaurantPhoneNumber;
     private String restaurantEmail;
+    private String restaurantWebsite;
+    private String restaurantSms;
+    private String restaurantDescription;
     private Double restaurantLat;
     private Double restaurantLon;
     private Float restaurantRating;
-    private String restaurantTags;
-
+    private List<String> restaurantTags;
+    private Date dateTimeCreated;
+    private Date dateTimeEdited;
 
     public Restaurant(String restaurantName,
                       String restaurantAddyLine1,
@@ -41,10 +42,15 @@ public class Restaurant {
                       String restaurantCountry,
                       String restaurantPhoneNumber,
                       String restaurantEmail,
+                      String restaurantWebsite,
+                      String restaurantSms,
+                      String restaurantDescription,
                       Double restaurantLat,
                       Double restaurantLon,
                       Float restaurantRating,
-                      String restaurantTags) {
+                      List<String> restaurantTags,
+                      Date dateTimeCreated,
+                      Date dateTimeEdited) {
         this.restaurantName = restaurantName;
         this.restaurantAddyLine1 = restaurantAddyLine1;
         this.restaurantAddyLine2 = restaurantAddyLine2;
@@ -54,13 +60,18 @@ public class Restaurant {
         this.restaurantCountry = restaurantCountry;
         this.restaurantPhoneNumber = restaurantPhoneNumber;
         this.restaurantEmail = restaurantEmail;
+        this.restaurantWebsite = restaurantWebsite;
+        this.restaurantSms = restaurantSms;
+        this.restaurantDescription = restaurantDescription;
         this.restaurantLat = restaurantLat;
         this.restaurantLon = restaurantLon;
         this.restaurantRating = restaurantRating;
         this.restaurantTags = restaurantTags;
+        this.dateTimeCreated = dateTimeCreated;
+        this.dateTimeEdited = dateTimeEdited;
     }
 
-    // id setter
+
     public void setRestaurantId(int restaurantId) {
         this.restaurantId = restaurantId;
     }
@@ -106,6 +117,17 @@ public class Restaurant {
         return restaurantEmail;
     }
 
+    public String getRestaurantWebsite() {
+        return restaurantWebsite;
+    }
+
+    public String getRestaurantSms() { return restaurantSms; }
+
+
+    public String getRestaurantDescription() {
+        return restaurantDescription;
+    }
+
     public Double getRestaurantLat() {
         return restaurantLat;
     }
@@ -118,7 +140,11 @@ public class Restaurant {
         return restaurantRating;
     }
 
-    public String getRestaurantTags() {
+    public List<String> getRestaurantTags() {
         return restaurantTags;
     }
+
+    public Date getDateTimeCreated() { return dateTimeCreated;}
+
+    public Date getDateTimeEdited() {return dateTimeEdited; }
 }

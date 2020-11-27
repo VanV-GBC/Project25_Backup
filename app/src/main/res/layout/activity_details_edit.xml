@@ -15,7 +15,6 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="28dp"
         android:hint="Restaurant Name"
-        android:inputType="text"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,7 +27,6 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="2dp"
         android:hint="Address Line 1"
-        android:inputType="text"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_txt_restaurantName" />
@@ -39,7 +37,6 @@
         android:layout_height="36dp"
         android:layout_marginTop="2dp"
         android:hint="Address Line 2"
-        android:inputType="text"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintStart_toStartOf="@+id/edit_txt_restaurantAddyLine1"
         app:layout_constraintTop_toBottomOf="@+id/edit_txt_restaurantAddyLine1" />
@@ -51,7 +48,6 @@
         android:layout_height="36dp"
         android:layout_marginTop="2dp"
         android:hint="Postal Code"
-        android:inputType="text"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintEnd_toEndOf="@+id/edit_txt_restaurantAddyLine2"
         app:layout_constraintTop_toBottomOf="@+id/edit_txt_restaurantAddyLine2" />
@@ -64,7 +60,6 @@
         android:layout_marginEnd="2dp"
         android:layout_marginRight="2dp"
         android:hint="City"
-        android:inputType="text"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintEnd_toStartOf="@+id/edit_txt_restaurantPostalCode"
         app:layout_constraintTop_toBottomOf="@+id/edit_txt_restaurantAddyLine2" />
@@ -75,7 +70,6 @@
         android:layout_height="36dp"
         android:layout_marginTop="2dp"
         android:hint="Province"
-        android:inputType="text"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintStart_toStartOf="@+id/edit_txt_restaurantCity"
         app:layout_constraintTop_toBottomOf="@+id/edit_txt_restaurantCity" />
@@ -88,7 +82,6 @@
         android:layout_marginLeft="2dp"
         android:layout_marginTop="2dp"
         android:hint="Country"
-        android:inputType="text"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintStart_toEndOf="@+id/edit_txt_restaurantProvince"
         app:layout_constraintTop_toBottomOf="@+id/edit_txt_restaurantCity" />
@@ -97,13 +90,14 @@
         android:id="@+id/edit_ratingBar_restaurantRating"
         style="@style/customRatingBar"
         android:layout_width="wrap_content"
+        android:progressTint="@color/cerulean"
+        android:secondaryProgressTint="@color/teal_700"
         android:layout_height="21dp"
         android:layout_marginTop="8dp"
         android:isIndicator="false"
         android:numStars="5"
         android:rating="3.5"
         android:stepSize="0.5"
-        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.694"
         app:layout_constraintStart_toEndOf="@+id/edit_txt_restaurantName"
@@ -134,13 +128,13 @@
 
     </FrameLayout>
 
-    <EditText
+    <com.google.android.material.chip.ChipGroup
         android:id="@+id/restaurantTags"
+        android:backgroundTint="@color/material_on_background_emphasis_medium"
         android:layout_width="382dp"
         android:layout_height="58dp"
         android:layout_marginTop="8dp"
         android:hint="Restaurant Tags "
-        android:inputType="text"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -150,7 +144,7 @@
         <!--        app:chipIconTint="@color/icon_tint"-->
         <!--        app:chipIcon="@drawable/location"-->
         <!--        android:text="@string/text_action_4"/>-->
-    </EditText>
+    </com.google.android.material.chip.ChipGroup>
 
     <!-- <ImageButton
         android:id="@+id/btnPhone"
@@ -212,7 +206,6 @@
         android:layout_width="140dp"
         android:layout_height="36dp"
         android:hint="Phone Number"
-        android:inputType="phone"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.534"
@@ -225,7 +218,6 @@
         android:layout_height="36dp"
         android:layout_marginTop="2dp"
         android:hint="Website"
-        android:inputType="textWebEditText"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -240,7 +232,6 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:hint="Email"
-        android:inputType="textEmailAddress"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -253,7 +244,6 @@
         android:layout_height="36dp"
         android:layout_marginTop="2dp"
         android:hint="Text Number"
-        android:inputType="phone"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.528"

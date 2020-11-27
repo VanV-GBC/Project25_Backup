@@ -1,12 +1,15 @@
-package ca.gbc.comp3074.project_25;
+package ca.gbc.comp3074.project_25._restaurant;
 
 import android.app.Application;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
-import androidx.room.Delete;
 
 import java.util.List;
+
+import ca.gbc.comp3074.project_25._restaurant.Restaurant;
+import ca.gbc.comp3074.project_25._restaurant.RestaurantDao;
+import ca.gbc.comp3074.project_25._restaurant.RestaurantDatabase;
 
 public class RestaurantRepository {
     private RestaurantDao restaurantDao;
@@ -32,13 +35,14 @@ public class RestaurantRepository {
     }
 
 
-    public void deleteAllRestaurants(Restaurant restaurant){
-        new DeleteAllRestaurantsAsyncTask(restaurantDao).execute(restaurant);
+    public void deleteAllRestaurants( ){
+        new DeleteAllRestaurantsAsyncTask(restaurantDao).execute();
     }
 
     public LiveData<List<Restaurant>> getAllRestaurants() {
         return allRestaurants;
     }
+
 
     private static class InsertRestaurantAsyncTask extends AsyncTask<Restaurant,Void,Void> {
         private RestaurantDao restaurantDao;
@@ -82,7 +86,7 @@ public class RestaurantRepository {
         }
     }
 
-    private static class DeleteAllRestaurantsAsyncTask extends AsyncTask<Restaurant,Void,Void> {
+    private static class DeleteAllRestaurantsAsyncTask extends AsyncTask<Void,Void,Void> {
         private RestaurantDao restaurantDao;
 
         private DeleteAllRestaurantsAsyncTask(RestaurantDao restaurantDao){
@@ -90,7 +94,7 @@ public class RestaurantRepository {
         }
 
         @Override
-        protected  Void doInBackground(Restaurant... restaurants) {
+        protected  Void doInBackground(Void... voids) {
             restaurantDao.deleteAllRestaurants();
             return null;
         }

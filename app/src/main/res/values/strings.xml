@@ -7,13 +7,14 @@
     <!--    About Activity strings-->
 
     <string name="txt_about_title">COMP 3074 - Project 25</string>
-    <string name="txt_m1">Max</string>
-    <string name="txt_m2">Stefan</string>
-    <string name="txt_m3">Kartik</string>
-    <string name="txt_m4">Van - 100535769</string>
-    <string name="title_activity_details">DetailsActivity</string>
-    <string name="title_activity_map">MapActivity</string>
-    <string name="title_activity_about">AboutActivity</string>
+    <string name="txt_m1">Max Bondarenko - 100420936</string>
+    <string name="txt_m2">Stefan Maric - 101208175</string>
+    <string name="txt_m3">Kartik - 101229795</string>
+    <string name="txt_m4">Vanja Vego - 100535769</string>
+    <string name="txt_m5">David Mosquera - </string>
+    <string name="title_activity_details">Restaurant View </string>
+    <string name="title_activity_map">Fullscreen Map</string>
+    <string name="title_activity_about">About</string>
     <!-- Strings used for fragments for navigation -->
 
 
@@ -28,6 +29,38 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_details_edit">DetailsEditActivity</string>
+
+
+    <!--    About Activity strings-->
+
+
+
+    <!-- Strings used for fragments for navigation -->
+
+
+
+    <!-- Strings used for map related stuff -->
+    <string name="txt_noMap_DetailsActivity_msg">No map to display</string>
+    <string name="txt_noMap_DetailsActivity_msg2">Maps require at least the restaurant name and city.</string>
+    <string name="txt_noMap_DetailsActivity_msg3">You can tap the edit button in the top bar to add a map </string>
+
+    <string name="txt_noMap_DetailsEditActivity_msg">Map not loaded. Please enter valid restaurant name and city.</string>
+
+    <string name="txt_fragmentMain">There are currently no restaurants to display.</string>
+    <string name="txt_fragmentMain2">Please tap the add button in the top bar to continue.</string>
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!--    &lt;!&ndash; Strings used for fragments for navigation &ndash;&gt;-->
     <!--    <string name="first_fragment_label">First Fragment</string>-->

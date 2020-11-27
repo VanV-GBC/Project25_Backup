@@ -1,4 +1,4 @@
-package ca.gbc.comp3074.project_25;
+package ca.gbc.comp3074.project_25.about_activity;
 
 import android.os.Bundle;
 
@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
+
+import ca.gbc.comp3074.project_25.R;
 
 public class AboutActivity extends AppCompatActivity {
 

@@ -42,8 +42,8 @@ public class MapsFragment extends Fragment {
 
             if(getArguments() != null){
                 restaurantName = getArguments().getString("restaurant_name");
-                restaurantLat = Double.parseDouble(getArguments().getString("restaurant_lat"));
-                restaurantLon = Double.parseDouble(getArguments().getString("restaurant_lon"));
+                restaurantLat = getArguments().getDouble("restaurant_lat");
+                restaurantLon = getArguments().getDouble("restaurant_lon");
             }
 
             LatLng restaurant = new LatLng(restaurantLat, restaurantLon);
