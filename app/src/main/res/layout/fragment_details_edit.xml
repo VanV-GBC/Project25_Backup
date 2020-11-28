@@ -134,7 +134,7 @@
 
     </FrameLayout>
 
-    <EditText
+    <com.google.android.material.chip.ChipGroup
         android:id="@+id/restaurantTags"
         android:layout_width="382dp"
         android:layout_height="58dp"
@@ -150,7 +150,7 @@
         <!--        app:chipIconTint="@color/icon_tint"-->
         <!--        app:chipIcon="@drawable/location"-->
         <!--        android:text="@string/text_action_4"/>-->
-    </EditText>
+    </com.google.android.material.chip.ChipGroup>
 
     <!-- <ImageButton
         android:id="@+id/btnPhone"
@@ -248,7 +248,7 @@
         app:layout_constraintTop_toBottomOf="@+id/edit_txt_restaurantWebsite" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/TextViewToTextYou"
+        android:id="@+id/edit_txt_sms"
         android:layout_width="140dp"
         android:layout_height="36dp"
         android:layout_marginTop="2dp"

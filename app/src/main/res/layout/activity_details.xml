@@ -231,7 +231,7 @@
     <!--        app:layout_constraintTop_toBottomOf="@+id/view_txt_restaurantWebsite" />-->
 
     <!--    <TextView-->
-    <!--        android:id="@+id/TextViewToTextYou"-->
+    <!--        android:id="@+id/edit_txt_sms"-->
     <!--        android:layout_width="wrap_content"-->
     <!--        android:layout_height="wrap_content"-->
     <!--        android:layout_marginTop="2dp"-->

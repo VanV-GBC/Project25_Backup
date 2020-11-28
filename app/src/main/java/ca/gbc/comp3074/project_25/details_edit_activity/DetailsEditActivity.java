@@ -1,22 +1,25 @@
 package ca.gbc.comp3074.project_25.details_edit_activity;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
 
+import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
 import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -27,7 +30,11 @@ import android.widget.RatingBar;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Locale;
 
 import ca.gbc.comp3074.project_25.MapsFragment;
@@ -51,8 +58,8 @@ public class DetailsEditActivity extends AppCompatActivity {
     public static final String EXTRA_SMS = "package ca.gbc.comp3074.project_25.details_edit_activity.EXTRA_WEBSITE";
     public static final String EXTRA_LAT = "package ca.gbc.comp3074.project_25.details_edit_activity.EXTRA_LAT";
     public static final String EXTRA_LON = "package ca.gbc.comp3074.project_25.details_edit_activity.EXTRA_LON";
-    public static final String EXTRA_RATING = "package ca.gbc.comp3074.project_25.details_edit_activity.EXTRA_WEBSITE";
-    public static final String EXTRA_TAGS = "package ca.gbc.comp3074.project_25.details_edit_activity.EXTRA_WEBSITE";
+    public static final String EXTRA_RATING = "package ca.gbc.comp3074.project_25.details_edit_activity.EXTRA_RATING";
+    public static final String EXTRA_TAGS = "package ca.gbc.comp3074.project_25.details_edit_activity.EXTRA_TAGS";
 
     private TextInputEditText txtRestaurantName;
     private TextInputEditText txtRestaurantAddyLine1;
@@ -65,40 +72,98 @@ public class DetailsEditActivity extends AppCompatActivity {
     private TextInputEditText txtRestaurantDescription;
     private TextInputEditText txtRestaurantEmail;
     private TextInputEditText txtRestaurantWebsite;
-    private ImageButton btnSMS;
+    private TextInputEditText restaurantSms;
     private Double lat;
     private Double lon;
-    EditText restaurantTags;
-    ChipGroup tagsChipGroup;
-    RatingBar ratingBar;
+    private List<String> restaurantTags;
+    private RatingBar ratingBar;
+    private float rating;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details_edit);
 
+        txtRestaurantName = (TextInputEditText) findViewById(R.id.edit_txt_restaurantName);
+        txtRestaurantAddyLine1 = (TextInputEditText) findViewById(R.id.edit_txt_restaurantAddyLine1);
+        txtRestaurantAddyLine2 = (TextInputEditText) findViewById(R.id.edit_txt_restaurantAddyLine2);
+        txtRestaurantCity = (TextInputEditText) findViewById(R.id.edit_txt_restaurantCity);
+        txtRestaurantProvince = (TextInputEditText) findViewById(R.id.edit_txt_restaurantProvince);
+        txtRestaurantCountry = (TextInputEditText) findViewById(R.id.edit_txt_restaurantCountry);
+        txtRestaurantPostalCode = (TextInputEditText) findViewById(R.id.edit_txt_restaurantPostalCode);
+        txtRestaurantPhoneNumber = (TextInputEditText) findViewById(R.id.edit_txt_restaurantPhoneNumber);
+        txtRestaurantDescription = (TextInputEditText) findViewById(R.id.edit_txt_restaurantDescription);
+        txtRestaurantEmail = (TextInputEditText) findViewById(R.id.edit_txt_restaurantEmail);
+        txtRestaurantWebsite = (TextInputEditText) findViewById(R.id.edit_txt_restaurantWebsite);
+        restaurantSms = (TextInputEditText) findViewById(R.id.edit_txt_sms);
+        ratingBar = (RatingBar) findViewById(R.id.edit_ratingBar_restaurantRating);
 
-        TextInputEditText txtRestaurantName = (TextInputEditText) findViewById(R.id.edit_txt_restaurantName);
-        TextInputEditText txtRestaurantAddyLine1 = (TextInputEditText) findViewById(R.id.edit_txt_restaurantAddyLine1);
-        TextInputEditText txtRestaurantAddyLine2 = (TextInputEditText) findViewById(R.id.edit_txt_restaurantAddyLine2);
-        TextInputEditText txtRestaurantCity = (TextInputEditText) findViewById(R.id.edit_txt_restaurantCity);
-        TextInputEditText txtRestaurantProvince = (TextInputEditText) findViewById(R.id.edit_txt_restaurantProvince);
-        TextInputEditText txtRestaurantCountry = (TextInputEditText) findViewById(R.id.edit_txt_restaurantCountry);
-        TextInputEditText txtRestaurantPostalCode = (TextInputEditText) findViewById(R.id.edit_txt_restaurantPostalCode);
-        TextInputEditText txtRestaurantPhoneNumber = (TextInputEditText) findViewById(R.id.edit_txt_restaurantPhoneNumber);
-        TextInputEditText txtRestaurantDescription = (TextInputEditText) findViewById(R.id.edit_txt_restaurantDescription);
-        TextInputEditText txtRestaurantEmail = (TextInputEditText) findViewById(R.id.edit_txt_restaurantEmail);
-        TextInputEditText txtRestaurantWebsite = (TextInputEditText) findViewById(R.id.edit_txt_restaurantWebsite);
-        ImageButton btnSMS = (ImageButton) findViewById(R.id.btnText);
-        EditText restaurantTags = (EditText) findViewById(R.id.restaurantTags);
-        RatingBar ratingBar = (RatingBar) findViewById(R.id.edit_ratingBar_restaurantRating);
+
+
+
+//        // Tags Drama
+//
+//        ChipGroup tagsChipGroup = (ChipGroup) findViewById(R.id.restaurantTags);
+//
+//        //Context context = holder.itemChipGroup.getContext();
+//        restaurantTags = (ChipGroup)
+//        for (String tag : tags){
+//            Chip chip = new Chip(context);
+//            chip.setText(tag);
+//            //restaurantTags.addView(chip);
+//            holder.itemChipGroup.addView(chip); // IT WORKS!!!!
+//        }
+//
+//        List<String> restaurantTags = Arrays.asList("");
+//
+//        for (int i = 0; i < tagsChipGroup.getChildCount(); i++) {
+//            String tag = ((Chip) tagsChipGroup.getChildAt(i)).getText().toString();
+//            restaurantTags.add(tag);
+//        }
 
 
         String name = txtRestaurantName.getText().toString();
         String city = txtRestaurantCity.getText().toString();
-        List<Address> geoLoad = getWithInfo(name, city);
-        lat = geoLoad.get(0).getLatitude();
-        lon = geoLoad.get(0).getLongitude();
+////        List<Address> geoLoad = getWithInfo(name, city);
+//
+//        lat = 0.0;
+//        lon = 0.0;
+//
+//        do {
+//            if (!name.trim().isEmpty() && !city.trim().isEmpty()){
+//                List<Address> geoLoad = getWithInfo(name, city);
+//
+//                lat = geoLoad.get(0).getLatitude();
+//                lon = geoLoad.get(0).getLongitude();
+//            }
+//
+//        }while (name.trim().isEmpty() && city.trim().isEmpty() && lat == 0.0 && lon == 0.0);
+//
+//
+
+        // Maps related
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//
+//
+//
+//        MapsFragment mapsFragment = new MapsFragment() ;
+//        MapsFragment_empty_DetailsEditActivity noMap = new MapsFragment_empty_DetailsEditActivity();
+//        // Bundle for MapsActivity
+//        Bundle bundle = new Bundle();
+//        bundle.putDouble("restaurant_lat",lat);
+//        bundle.putDouble("restaurant_lon", lon);
+//        bundle.putString("restaurant_name", name);
+//        if ( bundle.getString("restaurant_name") != null && bundle.getString("restaurant_city") != null){
+//            mapsFragment.setArguments(bundle);
+//            fragmentManager.beginTransaction().replace(R.id.fragment_container_details_map, mapsFragment).commit();
+//        }else{
+//            fragmentManager.beginTransaction().replace(R.id.fragment_container_details_map, noMap).commit();
+//        }
+
+
+        //lat = 43.6761366;
+        //lon = -79.4104903;
+
 
         // This one's tricky...will walk through
 
@@ -145,64 +210,59 @@ public class DetailsEditActivity extends AppCompatActivity {
 
 
 
-        // Maps related
-        FragmentManager fragmentManager = getSupportFragmentManager();
+
+
+        // close button
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
 
 
 
-        MapsFragment mapsFragment = new MapsFragment() ;
-        MapsFragment_empty_DetailsEditActivity noMap = new MapsFragment_empty_DetailsEditActivity();
-        // Bundle for MapsActivity
-        Bundle bundle = restaurantMapBundle();
 
-        if ( bundle.getString("restaurant_name") != null && bundle.getString("restaurant_city") != null){
-            mapsFragment.setArguments(bundle);
-            fragmentManager.beginTransaction().replace(R.id.fragment_container_details_map, mapsFragment).commit();
-        }else{
-
-            fragmentManager.beginTransaction().replace(R.id.fragment_container_details_map, noMap).commit();
-        }
 
     }
+    // onCreate END
 
     //temp coordinates for testing
 
-    Double restaurantLat = 43.6761366;
-    Double restaurantLon = -79.4104903;
+    //Double restaurantLat = 43.6761366;
+    //Double restaurantLon = -79.4104903;
     String restaurantName = "Original Grill";
     String restaurantCity = "Toronto";
-
-    //bundle for both partial and fullscreen maps
-    private Bundle restaurantMapBundle(){
-        if(!restaurantLat.isNaN() && !restaurantLon.isNaN()){
-            Bundle bundle = new Bundle();
-            bundle.putString("restaurant_name", "Original Grill");
-            bundle.putString("restaurant_city", "Toronto");
-            bundle.putDouble("restaurant_lat", restaurantLat);
-            bundle.putDouble("restaurant_lon", restaurantLon);
-            return bundle;
-        }
-        return null;
-    }
+//
+//    //bundle for both partial and fullscreen maps
+//    private Bundle restaurantMapBundle(){
+//        if(!lat.isNaN() && !lon.isNaN()){
+//            Bundle bundle = new Bundle();
+//            bundle.putString("restaurant_name", "Original Grill");
+//            bundle.putString("restaurant_city", "Toronto");
+//            bundle.putDouble("restaurant_lat", lat);
+//            bundle.putDouble("restaurant_lon", lon);
+//            return bundle;
+//        }
+//        return null;
+//    }
 
 
     //Some Geocoder stuff, might be put into its own class later
 
-    public List<Address> getWithLatLon(Double lat, Double lon){
 
-        Geocoder geo = new Geocoder(this, Locale.CANADA);
+       // not needed rn
+//    public List<Address> getWithLatLon(Double lat, Double lon){
+//
+//        Geocoder geo = new Geocoder(this, Locale.CANADA);
+//
+//        try {
+//            List<Address> addresses = geo.getFromLocation(lat, lon, 1);
+//              Toast.makeText(DetailsEditActivity.this, addresses.toString(),Toast.LENGTH_SHORT).show();
+//            return addresses;
+//        }
+//        catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        return null;
+//    }
 
-        try {
-            List<Address> addresses = geo.getFromLocation(lat, lon, 1);
-            //  Toast.makeText(DetailsEditActivity.this, addresses.toString(),Toast.LENGTH_SHORT).show();
-            return addresses;
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return null;
-    }
 
     public List<Address> getWithInfo(String resName, String resCity) {
 
@@ -220,7 +280,16 @@ public class DetailsEditActivity extends AppCompatActivity {
         }
 
     }
-    // Geocoder done
+    // Geocoder END
+
+
+
+
+
+
+
+
+
 
 
     // Menu Stuff
@@ -241,13 +310,14 @@ public class DetailsEditActivity extends AppCompatActivity {
         String Website = txtRestaurantWebsite.getText().toString();
         Double Lat = lat;
         Double Lon = lon;
-        Float rating = ratingBar.getRating();
+        Float r = ratingBar.getRating();
+        List<String> tags = restaurantTags;
 
         if(Name.trim().isEmpty() || City.trim().isEmpty()){
-            Toast.makeText(this, "You need to input at least a Restaurant name and city to save", Toast.LENGTH_LONG);
+            Toast.makeText(DetailsEditActivity.this, "You need to input at least a Restaurant name and city to save", Toast.LENGTH_LONG).show();
             return;
         }
-
+        // Sending data back to MainActivity
         Intent data = new Intent();
         data.putExtra(EXTRA_NAME, Name);
         data.putExtra(EXTRA_ADDR_LINE_1, AddyLine1);
@@ -263,8 +333,8 @@ public class DetailsEditActivity extends AppCompatActivity {
         data.putExtra(EXTRA_WEBSITE, Website);
         data.putExtra(EXTRA_LAT, Lat);
         data.putExtra(EXTRA_LON, Lon);
-        data.putExtra(EXTRA_RATING, rating);
-
+        data.putExtra(EXTRA_RATING, r);
+        data.putExtra(EXTRA_TAGS, String.valueOf(tags));
         setResult(RESULT_OK,data);
         finish();
 

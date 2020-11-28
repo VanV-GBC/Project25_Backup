@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,29 +60,22 @@ public class CardDataAdapter extends RecyclerView.Adapter<CardDataAdapter.CardHo
     public void onBindViewHolder(@NonNull CardHolder holder, int position) {
         Restaurant currentRestaurant = restaurants.get(position);
         holder.txtRestaurantName.setText(currentRestaurant.getRestaurantName());
-//        holder.txtRestaurantName.setText(currentRestaurant.getRestaurantAddyLine1());
-//        holder.txtRestaurantName.setText(currentRestaurant.getRestaurantAddyLine2());
-//        holder.txtRestaurantName.setText(currentRestaurant.getRestaurantCity());
-//        holder.txtRestaurantName.setText(currentRestaurant.getRestaurantPostalCode());
-//        holder.txtRestaurantName.setText(currentRestaurant.getRestaurantProvince());
-//        holder.txtRestaurantName.setText(currentRestaurant.getRestaurantCountry());
-//        holder.txtRestaurantName.setText(currentRestaurant.getRestaurantPhoneNumber());
-//        holder.txtRestaurantName.setText(currentRestaurant.getRestaurantEmail());
-//        holder.txtRestaurantName.setText(currentRestaurant.getRestaurantWebsite());
-//        holder.txtRestaurantName.setText(currentRestaurant.getRestaurantDescription());
-//        holder.txtRestaurantName.setText(String.valueOf(currentRestaurant.getRestaurantLat()));
-//        holder.txtRestaurantName.setText(String.valueOf(currentRestaurant.getRestaurantLon()));
         holder.txtRestaurantRating.setRating(currentRestaurant.getRestaurantRating());
 
         Context context = holder.itemChipGroup.getContext();
-        List<String> tags = currentRestaurant.getRestaurantTags();
-        ChipGroup restaurantTags = new ChipGroup(context);
-        for (String tag : tags){
-            Chip chip = new Chip(context);
-            chip.setText(tag);
-            //restaurantTags.addView(chip);
-            holder.itemChipGroup.addView(chip); // IT WORKS!!!!
+
+        if(currentRestaurant.getRestaurantTags() != null){
+            List<String> tags = currentRestaurant.getRestaurantTags();
+            //ChipGroup restaurantTags = new ChipGroup(context);
+            for (String tag : tags){
+                Chip chip = new Chip(context);
+                chip.setText(tag);
+                //restaurantTags.addView(chip);
+                holder.itemChipGroup.addView(chip); // IT WORKS!!!!
+            }
+
         }
+
 
 
     }
@@ -96,6 +90,9 @@ public class CardDataAdapter extends RecyclerView.Adapter<CardDataAdapter.CardHo
         notifyDataSetChanged();
     }
 
+    public Restaurant getRestaurantAt(int position){
+        return restaurants.get(position);
+    }
 
     class CardHolder extends RecyclerView.ViewHolder {
         private TextView txtRestaurantName;

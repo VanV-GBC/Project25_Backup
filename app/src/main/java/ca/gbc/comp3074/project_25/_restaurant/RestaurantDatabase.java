@@ -70,15 +70,15 @@ public abstract class RestaurantDatabase extends RoomDatabase {
                     "This is a nice place. This is also a temporary placeholder/dummy data",
                     43.6723899,
                     -79.4117368,
-                    4.5f,
+                    4f,
                     tags,
                     rn,
                     rn
             ));
 
             restaurantDao.insert(new Restaurant(
-                    "Original Grill",
-                    "22 Spadina Ave.",
+                    "Dundas Pizza",
+                    "2984 Dundas West St.",
                     "Unit 2",
                     "Toronto",
                     "m4p3f2",
@@ -88,7 +88,7 @@ public abstract class RestaurantDatabase extends RoomDatabase {
                     "some.place@yahoo.ca",
                     "www.google.com",
                     "4164444444",
-                    "This is a nice place. This is also a temporary placeholder/dummy data",
+                    "Grimy little hole in the wall place with amazing pizza.",
                     43.6723899,
                     -79.4117368,
                     4.5f,

@@ -96,7 +96,6 @@
         android:layout_marginTop="8dp"
         android:isIndicator="false"
         android:numStars="5"
-        android:rating="3.5"
         android:stepSize="0.5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.694"
@@ -239,7 +238,7 @@
         app:layout_constraintTop_toBottomOf="@+id/edit_txt_restaurantWebsite" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/TextViewToTextYou"
+        android:id="@+id/edit_txt_sms"
         android:layout_width="140dp"
         android:layout_height="36dp"
         android:layout_marginTop="2dp"

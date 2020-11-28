@@ -27,8 +27,6 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_details_edit">DetailsEditActivity</string>
 
 
@@ -45,7 +43,7 @@
     <string name="txt_noMap_DetailsActivity_msg2">Maps require at least the restaurant name and city.</string>
     <string name="txt_noMap_DetailsActivity_msg3">You can tap the edit button in the top bar to add a map </string>
 
-    <string name="txt_noMap_DetailsEditActivity_msg">Map not loaded. Please enter valid restaurant name and city.</string>
+    <string name="txt_noMap_DetailsEditActivity_msg">Map not loaded. Please enter valid restaurant name and city, and press the button below.</string>
 
     <string name="txt_fragmentMain">There are currently no restaurants to display.</string>
     <string name="txt_fragmentMain2">Please tap the add button in the top bar to continue.</string>
